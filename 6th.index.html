@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RelaxTech Consult · 中美财税咨询</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background: linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .hover-card {
+            transition: all 0.25s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+        .font-serif-custom {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
+        }
+        .tag {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+            transition: background-color 0.2s;
+        }
+        .tag:hover {
+            background-color: #e2e8f0;
+        }
+        /* 闭环箭头样式 */
+        .arrow-symbol {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .center-icon {
+            background: #eef2ff;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: #4f46e5;
+            font-size: 1.8rem;
+        }
+        /* 彩色渐变动态文字 */
+        .gradient-text-animated {
+            background: linear-gradient(90deg, #3b82f6, #10b981, #8b5cf6, #f59e0b, #3b82f6);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 4s ease infinite;
+        }
+        @keyframes gradient-flow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        /* 下指箭头动画：引导至 About 模块 */
+        .arrow-bounce {
+            animation: arrow-bounce 2s ease-in-out infinite;
+        }
+        @keyframes arrow-bounce {
+            0%, 100% { transform: translateY(0); opacity: 0.7; }
+            50% { transform: translateY(6px); opacity: 1; }
+        }
+        /* About 模块：动感 chill 风格 */
+        .about-chill {
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
+        }
+        .contact-card-chill {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .contact-card-chill:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(99, 102, 241, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+        .contact-card-chill .email-link {
+            transition: all 0.3s ease;
+        }
+        .contact-card-chill:hover .email-link {
+            color: #4f46e5;
+        }
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .float-soft {
+            animation: float-soft 5s ease-in-out infinite;
+        }
+        /* About 联系表单：动感轻松专业 */
+        .contact-form-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .contact-form-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.12);
+        }
+        .contact-input {
+            transition: all 0.25s ease;
+        }
+        .contact-input:focus {
+            outline: none;
+            border-color: #818cf8;
+            box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15);
+        }
+        .btn-submit {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -8px rgba(99, 102, 241, 0.4);
+        }
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- 固定导航栏 -->
+    <header class="glass-nav sticky top-0 z-20">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 flex items-center justify-between gap-6">
+            <!-- 左侧品牌标识 -->
+            <div class="font-serif-custom text-xl text-gray-700">
+                RelaxTech Consult <span class="font-semibold text-gray-300 mx-1">·</span> 中美财税咨询
+            </div>
+            <!-- 中间导航链接 -->
+            <nav class="flex-1 flex justify-center space-x-8 text-sm font-medium text-gray-500">
+                <a href="#home" class="hover:text-gray-900 transition-colors duration-200">Home</a>
+                <a href="#solution" class="hover:text-gray-900 transition-colors duration-200">Solution</a>
+                <a href="#about" class="hover:text-gray-900 transition-colors duration-200">About us</a>
+            </nav>
+            <!-- 右侧语言切换 -->
+            <div class="flex items-center gap-2 text-xs md:text-sm font-medium text-gray-500">
+                <a href="5th.index.html" class="px-2 py-1 rounded-full border border-indigo-500 text-indigo-600 bg-indigo-50">
+                    中文
+                </a>
+                <span class="text-gray-300">/</span>
+                <a href="EN.index.html" class="px-2 py-1 rounded-full border border-transparent hover:border-gray-300 hover:text-gray-900 transition-colors">
+                    EN
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 md:px-8">
+        <!-- ========== Home 页面 ========== -->
+        <section id="home" class="min-h-[85vh] flex items-center py-16 scroll-mt-16">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- 左侧文字内容（保持不变） -->
+                <div class="space-y-10">
+                    <h1 class="text-5xl md:text-6xl font-semibold text-gray-800 leading-tight">
+                        服务于中美初创企业
+                    </h1>
+                    <div class="space-y-6">
+                        <!-- 标准化财务流程 -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-50 rounded-xl p-2 text-blue-600 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">报表满足中美披露要求</h3>
+                            </div>
+                        </div>
+                        <!-- 跨境税务 -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-50 rounded-xl p-2 text-green-600 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">跨境税务合规与节税</h3>
+                            </div>
+                        </div>
+                        <!-- AI 与资金 -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-purple-50 rounded-xl p-2 text-purple-600 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">AI+财务，实现自动化</h3>
+                            </div>
+                        </div>
+                        <a href="#solution" class="inline-flex items-center gap-2 pt-6 text-sm text-gray-400 hover:text-gray-600 transition-colors group">
+                            <span>继续了解专业解决方案</span>
+                            <span class="arrow-bounce text-gray-300 group-hover:text-gray-500">↓</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- 右侧财务流程概览图（新） -->
+                <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-gray-100">
+                    <h3 class="text-lg font-medium text-gray-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-5 bg-blue-500 rounded-full"></span> 财务流程概览
+                    </h3>
+                    <!-- 3x3 网格闭环图 -->
+                    <div class="grid grid-cols-3 gap-2 items-center justify-items-center">
+                        <!-- 左上：阶段1 财务诊断 -->
+                        <div class="bg-blue-50 rounded-lg p-3 w-full text-center">
+                            <div class="text-sm font-medium text-blue-800">核算报表</div>
+                            <div class="text-xs text-blue-600 mt-1">财务运营</div>
+                        </div>
+                        <!-- 上中：右箭头 -->
+                        <div class="arrow-symbol">→</div>
+                        <!-- 右上：阶段2 税务合规 -->
+                        <div class="bg-amber-50 rounded-lg p-3 w-full text-center">
+                            <div class="text-sm font-medium text-amber-800">税务合规</div>
+                            <div class="text-xs text-amber-600 mt-1">转让定价架构</div>
+                        </div>
+                        <!-- 中左：上箭头（占位，实际放垂直箭头） -->
+                        <div class="arrow-symbol">↑</div>
+                        <!-- 中心：循环图标 -->
+                        <div class="center-icon">↻</div>
+                        <!-- 中右：下箭头 -->
+                        <div class="arrow-symbol">↓</div>
+                        <!-- 左下：阶段4 资金优化 -->
+                        <div class="bg-purple-50 rounded-lg p-3 w-full text-center">
+                            <div class="text-sm font-medium text-purple-800">资金优化</div>
+                            <div class="text-xs text-purple-600 mt-1">流动性管理</div>
+                        </div>
+                        <!-- 下中：左箭头 -->
+                        <div class="arrow-symbol">←</div>
+                        <!-- 右下：阶段3 AI自动化 -->
+                        <div class="bg-green-50 rounded-lg p-3 w-full text-center">
+                            <div class="text-sm font-medium text-green-800">AI+财务</div>
+                            <div class="text-xs text-green-600 mt-1">流程重构</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400 border-t border-gray-100 pt-3 flex items-center gap-1">
+                        <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        持续迭代 · 闭环优化
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== Solution 页面 ========== -->
+        <section id="solution" class="py-20 border-t border-gray-100/80 scroll-mt-20">
+            <div class="mb-12">
+                <span class="text-xs font-medium text-gray-400 tracking-widest uppercase">—— 专业解决方案</span>
+                <h2 class="text-3xl font-light text-gray-800 mt-2 text-center">What We Build with RelaxTech Consult</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 卡片 1: 账务处理 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover-card flex flex-col">
+                    <div class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Accounting</div>
+                    <div class="text-2xl font-bold text-gray-800 mt-1 leading-tight">核算体系</div>
+                    <p class="text-gray-600 text-sm mt-3 leading-relaxed flex-grow">
+                        1.1 中美会计准则下，三大财报的转换与编制；<br>
+                        1.2 集团合并报表。
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">US GAAP</span>
+                        <span class="tag">PRC GAAP</span>
+                        <span class="tag">ASC830 外币折算</span>
+                    </div>
+                </div>
+                <!-- 卡片 2: 财务+AI 自动化设计 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover-card flex flex-col">
+                    <div class="text-sm font-semibold text-green-600 uppercase tracking-wider">AI Automation</div>
+                    <div class="text-2xl font-bold text-gray-800 mt-1 leading-tight">财务+AI<br>自动化设计</div>
+                    <p class="text-gray-600 text-sm mt-3 leading-relaxed flex-grow">
+                        从收入/成本/资金三大模块，定制AI自动化方案，消除重复性基础账务工作。
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">收入确认</span>
+                        <span class="tag">成本管理</span>
+                        <span class="tag">资金流预测</span>
+                        <span class="tag">财务流程优化</span>
+                    </div>
+                </div>
+                <!-- 卡片 3: 跨境税务 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover-card flex flex-col">
+                    <div class="text-sm font-semibold text-amber-600 uppercase tracking-wider">Cross-border Tax</div>
+                    <div class="text-2xl font-bold text-gray-800 mt-1 leading-tight">跨境税务</div>
+                    <p class="text-gray-600 text-sm mt-3 leading-relaxed flex-grow">
+                        3.1 税收筹划 — 中美税收抵免、转让定价架构；<br>
+                        3.2 年度税务申报 — 报税节点与申报策略；
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">特拉华州</span>
+                        <span class="tag">报税节点</span>
+                        <span class="tag">税收筹划</span>
+                        <span class="tag">中美合规</span>
+                    </div>
+                </div>
+                <!-- 卡片 4: 资金管理 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover-card flex flex-col">
+                    <div class="text-sm font-semibold text-purple-600 uppercase tracking-wider">Treasury</div>
+                    <div class="text-2xl font-bold text-gray-800 mt-1 leading-tight">资金管理</div>
+                    <p class="text-gray-600 text-sm mt-3 leading-relaxed flex-grow">
+                        4.1 资金流设计 — 收付路径优化、资金池管理；<br>
+                        4.2 流动性管理 — 现金流预测、短期投资配置与融资成本把控；
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">资金流设计</span>
+                        <span class="tag">流动性管理</span>
+                        <span class="tag">现金流预测</span>
+                        <span class="tag">优化配置</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 flex flex-col items-center gap-4 border-t border-gray-100">
+                <p class="text-2xl text-center text-gray-600">定制方案 · 首次咨询免费</p>
+                <a href="#about" class="inline-flex flex-col items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors group">
+                    <span class="text-sm">联系方式 · 预约咨询</span>
+                    <svg class="w-6 h-6 arrow-bounce text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ========== About us 页面 ========== -->
+        <section id="about" class="py-24 border-t border-gray-100/80 scroll-mt-20 min-h-[60vh] flex items-center about-chill">
+            <div class="max-w-3xl mx-auto w-full px-6">
+                <div class="mb-12 text-center">
+                    <h2 class="text-4xl font-light text-gray-800 mt-4 mb-4">Start The RelaxConsult Journal</h2>
+                    <p class="text-gray-500 text-sm max-w-md mx-auto">留下邮箱，我们将在 1–2 个工作日内联系您。<br>
+                        期待与您产生思想的火花。 ✦</p>
+                </div>
+                <div class="contact-form-card float-soft bg-white/95 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-gray-100/80 max-w-md mx-auto">
+                    <!-- 修改为 Getform 地址和字段 -->
+                    <form id="about-form" class="space-y-5" action="https://shichen2801.getform.com/97kn1" method="POST">
+                        <input type="hidden" name="subject" value="FinancialAIRequirement">
+                        <div>
+                            <label for="about-email" class="block text-sm font-medium text-gray-600 mb-2">邮箱</label>
+                            <input type="email" id="about-email" name="email" placeholder="your@email.com" required
+                                class="contact-input w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:bg-white">
+                        </div>
+                        <button type="submit" class="btn-submit w-full py-3.5 px-6 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium text-sm tracking-wide">
+                            提交 · 等待联系
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-6 text-center">或直接邮件至 shichen2801@gmail.com · 中国 · 深圳</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-100/60 py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 text-xs text-gray-300 flex justify-between">
+            <span>© 2025 RelaxTech Consult</span>
+            <span>简约 · 专业 · 跨境财税</span>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('about-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = this;
+            const btn = form.querySelector('button[type="submit"]');
+            const origText = btn.textContent;
+            btn.textContent = '提交中...';
+            btn.disabled = true;
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    alert('感谢您的提交！我们将在 1-2 个工作日内通过邮箱联系您。');
+                    form.reset();
+                } else {
+                    alert('提交失败，请稍后重试或直接邮件至 shichen2801@gmail.com');
+                }
+            } catch (err) {
+                alert('网络错误，请检查网络后重试。');
+            }
+            btn.textContent = origText;
+            btn.disabled = false;
+        });
+    </script>
+</body>
+</html>
